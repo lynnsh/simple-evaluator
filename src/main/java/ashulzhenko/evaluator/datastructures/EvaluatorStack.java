@@ -2,6 +2,7 @@ package ashulzhenko.evaluator.datastructures;
 
 import java.util.ArrayList;
 import java.util.List;
+import ashulzhenko.evaluator.exceptions.EmptyStackException;
 
 /**
  *
@@ -22,14 +23,14 @@ public class EvaluatorStack<T> {
     
     public void push(T value) {
         if(value == null)
-            throw new IllegalArgumentException("Null value passed to the stack.");
+            throw new NullPointerException("Null value passed to the stack.");
         pointer++;
         stack.add(value);
     }
     
     public T pop() {
         if(isEmpty())
-            throw new IllegalArgumentException("There are no values in the stack to pop.");
+            throw new EmptyStackException("There are no values in the stack to pop.");
         T value = stack.remove(pointer);
         pointer--;
         return value;
@@ -37,7 +38,7 @@ public class EvaluatorStack<T> {
     
     public T peek() {
         if(isEmpty())
-            throw new IllegalArgumentException("There are no values in the stack.");
+            throw new EmptyStackException("There are no values in the stack.");
         return stack.get(pointer);
     }
 }

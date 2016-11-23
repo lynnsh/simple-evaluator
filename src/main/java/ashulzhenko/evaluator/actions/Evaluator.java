@@ -3,6 +3,9 @@ package ashulzhenko.evaluator.actions;
 import ashulzhenko.evaluator.datastructures.EvaluatorQueue;
 import ashulzhenko.evaluator.datastructures.EvaluatorStack;
 import java.util.regex.Pattern;
+import ashulzhenko.evaluator.exceptions.InvalidInfixQueueException;
+import ashulzhenko.evaluator.exceptions.InvalidOperatorException;
+import ashulzhenko.evaluator.exceptions.InvalidPostfixQueueException;
 
 /**
  *
@@ -32,20 +35,22 @@ public class Evaluator {
                 values.push(value);
             }
             else if(isOperator(value)) {
-                if(values.isEmpty())
-                    throw new IllegalArgumentException("Invalid postfix queue.");
-                int rightV = Integer.parseInt(values.pop());
-                if(values.isEmpty())
-                    throw new IllegalArgumentException("Invalid postfix queue.");
-                int leftV = Integer.parseInt(values.pop());
+                int rightV = getValue();
+                int leftV = getValue();
                 result = performOperation(leftV, value, rightV);
                 values.push(result+"");
             }
             else {
-                throw new IllegalArgumentException("Invalid character in postfix queue");
+                throw new InvalidPostfixQueueException();
             }
         }
         return result;
+    }
+    
+    private int getValue() {
+        if(values.isEmpty())
+            throw new InvalidPostfixQueueException("The postfix queue is empty. An operand was expected");
+        return Integer.parseInt(values.pop());
     }
     
     private boolean isOperator(String value) {
@@ -65,38 +70,46 @@ public class Evaluator {
             }
             else if (value.equals(")")) {
                 rightP++;
-                String operator = operators.pop();
-                if(!isOperator(operator))
-                    throw new IllegalArgumentException("Invalid operator.");
-                else {
-                    postfix.push(operator);
-                    String parentheses = operators.pop();
-                    if(!parentheses.equals("("))
-                        throw new IllegalArgumentException("Invalid operator.");
-                }
+                handleRightBracket();              
             }
             else if(isOperator(value)) {
-                if(!operators.isEmpty()) {
-                    String prevOp = operators.peek();
-                    if(!prevOp.equals("(") && needSwap(prevOp, value)) {
-                        postfix.push(prevOp);
-                        operators.pop();    
-                    }
-                }
-                operators.push(value);
+                handleOperator(value);
             }
             else if(Pattern.matches(numRegex, value)) {
                 postfix.push(value);
             }
             else {
-                throw new IllegalArgumentException("Invalid character in infix queue");
+                throw new InvalidInfixQueueException();
             }
         }
         while(!operators.isEmpty()) {
             postfix.push(operators.pop());
         }
         if(rightP != leftP)
-            throw new IllegalArgumentException("Parentheses do not match.");
+            throw new InvalidOperatorException("Parentheses do not match.");
+    }
+    
+    private void handleOperator(String value) {
+        if(!operators.isEmpty()) {
+            String prevOp = operators.peek();
+            if(!prevOp.equals("(") && needSwap(prevOp, value)) {
+                postfix.push(prevOp);
+                operators.pop();    
+            }
+        }
+        operators.push(value);
+    }
+    
+    private void handleRightBracket() {   
+        String operator = operators.pop();
+        if(!isOperator(operator))
+            throw new InvalidOperatorException("Operator was expected in the queue: +, -, *, /.");
+        else {
+            postfix.push(operator);
+            String parentheses = operators.pop();
+            if(!parentheses.equals("("))
+                throw new InvalidOperatorException("Left parentheses was expected: (.");
+        }
     }
     
     //need swap if nextO <= prevO
@@ -108,7 +121,7 @@ public class Evaluator {
             return prevO.equals("*") || prevO.equals("/");
         }
         else
-            throw new IllegalArgumentException("Invalid operator.");
+            throw new InvalidOperatorException("Operator was expected in the queue: +, -, *, /.");
     }
 
     private int performOperation(int leftV, String operator, int rightV) {
@@ -119,8 +132,10 @@ public class Evaluator {
                 return leftV*rightV;
             case "/":
                 return leftV/rightV;
-            default:
+            case "-":
                 return leftV-rightV;
+            default:
+                throw new InvalidOperatorException("Operator was expected in the queue: +, -, *, /.");
         }
     }
 
