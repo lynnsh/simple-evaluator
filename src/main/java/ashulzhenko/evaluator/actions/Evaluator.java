@@ -106,9 +106,11 @@ public class Evaluator {
             throw new InvalidOperatorException("Operator was expected in the queue: +, -, *, /.");
         else {
             postfix.push(operator);
-            String parentheses = operators.pop();
-            if(!parentheses.equals("("))
-                throw new InvalidOperatorException("Left parentheses was expected: (.");
+            while(!operators.peek().equals("(")) {
+                String value = operators.pop();
+                postfix.push(value);
+            }           
+            operators.pop();
         }
     }
     

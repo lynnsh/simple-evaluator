@@ -29,46 +29,41 @@ public class EvaluatorTest {
     private int result;
     
     //http://scriptasylum.com/tutorials/infix_postfix/infix_postfix.html
+    //http://csis.pace.edu/~wolf/CS122/infix-postfix.htm
     @Parameters(name = "{index} plan[{0}]={1}]")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
             //1: 2+3*4
-            {new String[]{"2", "+", "3", "*", "4"},
-             new String[]{"2", "3", "4", "*", "+"},
-             new String[]{"14"}},           
+            {"2 + 3 * 4", "2 3 4 * +", "14"},           
             //2: 2*3+4
-            {new String[]{"2", "*", "3", "+", "4"},
-             new String[]{"2", "3", "*", "4", "+"},
-             new String[]{"10"}},           
+            {"2 * 3 + 4", "2 3 * 4 +", "10"},           
             //3: ((5+1)*2)+3
-            {new String[]{"(", "(", "5", "+", "1", ")", "*", "2", ")", "+", "3"},
-             new String[]{"5", "1", "+", "2", "*", "3", "+"},
-             new String[]{"15"}},  
+            {"( ( 5 + 1 ) * 2 ) + 3", "5 1 + 2 * 3 +", "15"},  
             //4: (5+1)*2+3
-            {new String[]{"(", "5", "+", "1", ")", "*", "2", "+", "3"},
-             new String[]{"5", "1", "+", "2", "*", "3", "+"},
-             new String[]{"15"}}, 
+            {"( 5 + 1 ) * 2 + 3", "5 1 + 2 * 3 +", "15"}, 
             //5: 5+(1*2)+3
-            {new String[]{"5", "+", "(", "1", "*", "2", ")", "+", "3"},
-             new String[]{"5", "1", "2", "*", "+", "3", "+"},
-             new String[]{"10"}}, 
+            {"5 + ( 1 * 2 ) + 3", "5 1 2 * + 3 +", "10"}, 
             //6: 10+(2*3)+(1+3)*5
-            {new String[]{"10", "+", "(", "2", "*", "3", ")", "+", "(","1","+","3", ")", "*", "5"},
-             new String[]{"10", "2", "3", "*", "+", "1", "3", "+", "5", "*", "+"},
-             new String[]{"36"}}, 
+            {"10 + ( 2 * 3 ) + ( 1 + 3 ) * 5", "10 2 3 * + 1 3 + 5 * +", "36"},
+            //7: 2*(3+2*7)+10
+            {"2 * ( 3 + 2 * 7 ) + 10", "2 3 2 7 * + * 10 +", "44"},
+            //8: 11+1-100*2/(50-25)+25
+            {"11 + 1 - 100 * 2 / ( 50 - 25 ) + 25", "11 1 + 100 2 * 50 25 - / - 25 +", "29"},
             
         });
     }
     
-    public EvaluatorTest(String[] expression, String[] expect, String[] results) {
+    public EvaluatorTest(String expression, String expect, String results) {
         infix = new EvaluatorQueue<>();
         expected = new EvaluatorQueue<>();
-        for(String str : expression)
+        String[] array = expression.split(" ");
+        for(String str : array)
             infix.push(str);
-        for(String str : expect)
+        array = expect.split(" ");
+        for(String str : array)
             expected.push(str);
         evaluator = new Evaluator();
-        result = Integer.parseInt(results[0]);
+        result = Integer.parseInt(results);
     }
     
     @Test
