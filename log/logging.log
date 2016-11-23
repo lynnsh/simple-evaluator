@@ -1,0 +1,83 @@
+[DEBUG] 2016-11-22 19:39:33.957 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, +, 4]
+[DEBUG] 2016-11-22 19:43:19.861 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, +, 4]
+[DEBUG] 2016-11-22 19:43:19.869 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, 4]
+[DEBUG] 2016-11-22 19:51:38.942 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, +, 4]
+[DEBUG] 2016-11-22 19:51:38.951 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4]
+[DEBUG] 2016-11-22 19:53:59.201 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, +, 4]
+[DEBUG] 2016-11-22 19:53:59.210 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4]
+[DEBUG] 2016-11-22 20:37:11.206 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, +, 4]
+[DEBUG] 2016-11-22 20:37:11.215 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4]
+[DEBUG] 2016-11-22 20:39:36.323 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, +, 4]
+[DEBUG] 2016-11-22 20:39:36.340 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4]
+[DEBUG] 2016-11-22 20:39:55.177 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, +, 4]
+[DEBUG] 2016-11-22 20:39:55.185 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4]
+[DEBUG] 2016-11-22 21:06:15.205 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, +, 4, *]
+[DEBUG] 2016-11-22 21:06:15.215 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:06:55.523 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, +, 4, *]
+[DEBUG] 2016-11-22 21:06:55.532 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:08:33.702 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:08:33.706 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:11:28.789 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:11:28.792 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:16:47.133 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:16:47.138 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:16:47.139 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:38:32.422 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:38:32.429 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:38:32.431 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:39:34.294 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:39:34.300 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:39:34.304 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:40:42.022 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:40:42.031 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:40:42.035 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:41:15.154 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:41:15.158 [main] EvaluatorTest - expect: 14 received: 14
+[DEBUG] 2016-11-22 21:41:15.159 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:41:15.160 [main] EvaluatorTest - expect: 10 received: 10
+[DEBUG] 2016-11-22 21:41:15.161 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:41:15.162 [main] EvaluatorTest - expect: 15 received: 15
+[DEBUG] 2016-11-22 21:42:37.212 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:42:37.217 [main] EvaluatorTest - expect: 14 received: 14
+[DEBUG] 2016-11-22 21:42:37.218 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:42:37.219 [main] EvaluatorTest - expect: 10 received: 10
+[DEBUG] 2016-11-22 21:42:37.220 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:42:37.221 [main] EvaluatorTest - expect: 15 received: 15
+[DEBUG] 2016-11-22 21:51:21.749 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:51:21.753 [main] EvaluatorTest - expect: 14 received: 14
+[DEBUG] 2016-11-22 21:51:21.754 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:51:21.755 [main] EvaluatorTest - expect: 10 received: 10
+[DEBUG] 2016-11-22 21:51:21.755 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:51:21.757 [main] EvaluatorTest - expect: 15 received: 15
+[DEBUG] 2016-11-22 21:51:21.758 [main] EvaluatorTest - expect: [5, 1, +, 2, 3, +, *] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:51:21.763 [main] EvaluatorTest - expect: 15 received: 15
+[DEBUG] 2016-11-22 21:53:09.898 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:53:09.901 [main] EvaluatorTest - expect: 14 received: 14
+[DEBUG] 2016-11-22 21:53:09.902 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:53:09.903 [main] EvaluatorTest - expect: 10 received: 10
+[DEBUG] 2016-11-22 21:53:09.904 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:53:09.905 [main] EvaluatorTest - expect: 15 received: 15
+[DEBUG] 2016-11-22 21:53:09.906 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:53:09.907 [main] EvaluatorTest - expect: 15 received: 15
+[DEBUG] 2016-11-22 21:59:32.004 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 21:59:32.008 [main] EvaluatorTest - expect: 14 received: 14
+[DEBUG] 2016-11-22 21:59:32.009 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 21:59:32.010 [main] EvaluatorTest - expect: 10 received: 10
+[DEBUG] 2016-11-22 21:59:32.010 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:59:32.011 [main] EvaluatorTest - expect: 15 received: 15
+[DEBUG] 2016-11-22 21:59:32.012 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 21:59:32.013 [main] EvaluatorTest - expect: 15 received: 15
+[DEBUG] 2016-11-22 21:59:32.013 [main] EvaluatorTest - expect: [5, 1, 2, *, +, 3, +] postfix: [5, 1, 2, *, +, 3, +]
+[DEBUG] 2016-11-22 21:59:32.014 [main] EvaluatorTest - expect: 10 received: 10
+[DEBUG] 2016-11-22 22:15:32.639 [main] EvaluatorTest - expect: [2, 3, 4, *, +] postfix: [2, 3, 4, *, +]
+[DEBUG] 2016-11-22 22:15:32.643 [main] EvaluatorTest - expect: 14 received: 14
+[DEBUG] 2016-11-22 22:15:32.644 [main] EvaluatorTest - expect: [2, 3, *, 4, +] postfix: [2, 3, *, 4, +]
+[DEBUG] 2016-11-22 22:15:32.645 [main] EvaluatorTest - expect: 10 received: 10
+[DEBUG] 2016-11-22 22:15:32.645 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 22:15:32.647 [main] EvaluatorTest - expect: 15 received: 15
+[DEBUG] 2016-11-22 22:15:32.647 [main] EvaluatorTest - expect: [5, 1, +, 2, *, 3, +] postfix: [5, 1, +, 2, *, 3, +]
+[DEBUG] 2016-11-22 22:15:32.648 [main] EvaluatorTest - expect: 15 received: 15
+[DEBUG] 2016-11-22 22:15:32.649 [main] EvaluatorTest - expect: [5, 1, 2, *, +, 3, +] postfix: [5, 1, 2, *, +, 3, +]
+[DEBUG] 2016-11-22 22:15:32.650 [main] EvaluatorTest - expect: 10 received: 10
+[DEBUG] 2016-11-22 22:15:32.650 [main] EvaluatorTest - expect: [10, 2, 3, *, +, 1, 3, +, 5, *, +] postfix: [10, 2, 3, *, +, 1, 3, +, 5, *, +]
+[DEBUG] 2016-11-22 22:15:32.651 [main] EvaluatorTest - expect: 36 received: 36
