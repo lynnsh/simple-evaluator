@@ -16,7 +16,7 @@ public class Evaluator {
     private EvaluatorQueue<String> postfix;
     private EvaluatorStack<String> operators;
     private EvaluatorStack<String> values;
-    private String numRegex = "^[0-9]+$";
+    private String numRegex = "^[+-]?([0-9]*[.])?[0-9]+$";
     
     public EvaluatorQueue<String> calculate(EvaluatorQueue<String> infix) {
         this.infix = infix;
@@ -27,16 +27,16 @@ public class Evaluator {
         return postfix;
     }
     
-    public int evaluate(EvaluatorQueue<String> postfix) {
-        int result = 0;
+    public double evaluate(EvaluatorQueue<String> postfix) {
+        double result = 0;
         while(!postfix.isEmpty()) {
             String value = postfix.pop();
             if(Pattern.matches(numRegex, value)) {
                 values.push(value);
             }
             else if(isOperator(value)) {
-                int rightV = getValue();
-                int leftV = getValue();
+                double rightV = getValue();
+                double leftV = getValue();
                 result = performOperation(leftV, value, rightV);
                 values.push(result+"");
             }
@@ -47,10 +47,10 @@ public class Evaluator {
         return result;
     }
     
-    private int getValue() {
+    private double getValue() {
         if(values.isEmpty())
             throw new InvalidPostfixQueueException("The postfix queue is empty. An operand was expected");
-        return Integer.parseInt(values.pop());
+        return Double.parseDouble(values.pop());
     }
     
     private boolean isOperator(String value) {
@@ -89,28 +89,31 @@ public class Evaluator {
             throw new InvalidOperatorException("Parentheses do not match.");
     }
     
-    private void handleOperator(String value) {
+    private void handleOperator(String nextOp) {     
         if(!operators.isEmpty()) {
             String prevOp = operators.peek();
-            if(!prevOp.equals("(") && needSwap(prevOp, value)) {
+            while(!prevOp.equals("(") && needSwap(prevOp, nextOp)) {
                 postfix.push(prevOp);
-                operators.pop();    
+                operators.pop();
+                prevOp = operators.isEmpty() ? "(" : operators.peek();        
             }
         }
-        operators.push(value);
+        operators.push(nextOp);
     }
     
     private void handleRightBracket() {   
         String operator = operators.pop();
-        if(!isOperator(operator))
-            throw new InvalidOperatorException("Operator was expected in the queue: +, -, *, /.");
-        else {
-            postfix.push(operator);
-            while(!operators.peek().equals("(")) {
-                String value = operators.pop();
-                postfix.push(value);
-            }           
-            operators.pop();
+        if(!operator.equals("(")) {
+            if(!isOperator(operator))
+                throw new InvalidOperatorException("Operator was expected in the queue: +, -, *, /.");
+            else {
+                postfix.push(operator);
+                while(!operators.peek().equals("(")) {
+                    String value = operators.pop();
+                    postfix.push(value);
+                }           
+                operators.pop();
+            }
         }
     }
     
@@ -126,7 +129,7 @@ public class Evaluator {
             throw new InvalidOperatorException("Operator was expected in the queue: +, -, *, /.");
     }
 
-    private int performOperation(int leftV, String operator, int rightV) {
+    private double performOperation(double leftV, String operator, double rightV) {
         switch (operator) {
             case "+":
                 return leftV+rightV;

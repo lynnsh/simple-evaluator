@@ -1,1 +1,3 @@
-ashulzhenko\evaluator\action\EvaluatorTest.class
+ashulzhenko\evaluator\actions\EvaluatorTest.class
+ashulzhenko\evaluator\datastructures\EvaluatorQueueTest.class
+ashulzhenko\evaluator\datastructures\EvaluatorStackTest.class

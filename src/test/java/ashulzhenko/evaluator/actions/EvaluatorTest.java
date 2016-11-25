@@ -1,4 +1,4 @@
-package ashulzhenko.evaluator.action;
+package ashulzhenko.evaluator.actions;
 
 import ashulzhenko.evaluator.actions.Evaluator;
 import ashulzhenko.evaluator.datastructures.EvaluatorQueue;
@@ -26,10 +26,9 @@ public class EvaluatorTest {
     private EvaluatorQueue<String> infix;
     private EvaluatorQueue<String> expected;
     private EvaluatorQueue<String> postfix;
-    private int result;
+    private double result;
     
     //http://scriptasylum.com/tutorials/infix_postfix/infix_postfix.html
-    //http://csis.pace.edu/~wolf/CS122/infix-postfix.htm
     @Parameters(name = "{index} plan[{0}]={1}]")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
@@ -49,6 +48,40 @@ public class EvaluatorTest {
             {"2 * ( 3 + 2 * 7 ) + 10", "2 3 2 7 * + * 10 +", "44"},
             //8: 11+1-100*2/(50-25)+25
             {"11 + 1 - 100 * 2 / ( 50 - 25 ) + 25", "11 1 + 100 2 * 50 25 - / - 25 +", "29"},
+            //9: 11+((1-100)*2/(50-25))+25
+            {"11 + ( ( 1 - 100 ) * 2 / ( 50 - 25 ) ) + 25", "11 1 100 - 2 * 50 25 - / + 25 +", "28.08"},
+            //10: 2.3*3+4.7
+            {"2.3 * 3 + 4.7", "2.3 3 * 4.7 +", "11.6"},         
+            //11: ((3+11)/(2+8)-3)*2
+            {"( ( 3 + 11 ) / ( 2 + 8 ) - 3 ) * 2", "3 11 + 2 8 + / 3 - 2 *", "-3.2"},           
+            //12: (2+8*2/4)-(3+7)/2+7
+            {"( 2 + 8 * 2 / 4 ) - ( 3 + 7 ) / 2 + 7", "2 8 2 * 4 / + 3 7 + 2 / - 7 +", "8"},           
+            //13: (-10*8)*100+21/7
+            {"( -10 * 8 ) * 100 + 21 / 7", "-10 8 * 100 * 21 7 / +", "-7997"},  
+            //14: (22/11+3-7)*12-(2+1)
+            {"( 22 / 11 + 3 - 7 ) * 12 - ( 2 + 1 )", "22 11 / 3 + 7 - 12 * 2 1 + -", "-27"}, 
+            //15: 100/10*2.5+(-20)
+            {"100 / 10 * 2.5 + ( -20 )", "100 10 / 2.5 * -20 +", "5"}, 
+            //16: 1/0.4+2.3-(-10)
+            {"1 / 0.4 + 2.3 - ( -10 )", "1 0.4 / 2.3 + -10 -", "14.8"},
+            //17: (1+(3+(4-5)*3)-5)-10
+            {"( 1 + ( 3 + ( 4 - 5 ) * 3 ) - 5 ) - 10", "1 3 4 5 - 3 * + + 5 - 10 -", "-14"},
+            //18: (((((2+7)-5*2)/2)-2)+10)*3
+            {"( ( ( ( ( 2 + 7 ) - 5 * 2 ) / 2 ) - 2 ) + 10 ) * 3", "2 7 + 5 2 * - 2 / 2 - 10 + 3 *", "22.5"},
+            //19: 10/2
+            {"10 / 2", "10 2 /", "5"},
+            //20: 2+2+2+2+2
+            {"2 + 2 + 2 + 2 + 2", "2 2 + 2 + 2 + 2 +", "10"},          
+            //21: 10-(2/2+3-(10+27))-5
+            {"10 - ( 2 / 2 + 3 - ( 10 + 27 ) ) - 5", "10 2 2 / 3 + 10 27 + - - 5 -", "38"},           
+            //22: 22/2+2*2-2+2
+            {"22 / 2 + 2 * 2 - 2 + 2", "22 2 / 2 2 * + 2 - 2 +", "15"},           
+            //23: ((12-10)/5+(33+11)-15)*23
+            {"( ( 12 - 10 ) / 5 + ( 33 + 11 ) - 15 ) * 23", "12 10 - 5 / 33 11 + + 15 - 23 *", "676.2"},  
+            //24: (13+27)*2-34/17+2*7
+            {"( 13 + 27 ) * 2 - 34 / 17 + 2 * 7", "13 27 + 2 * 34 17 / - 2 7 * +", "92"}, 
+            //25: 1.4*2-2.3+(-17.3)
+            {"1.4 * 2 - 2.3 + ( -17.3 )", "1.4 2 * 2.3 - -17.3 +", "-16.8"}
             
         });
     }
@@ -63,22 +96,21 @@ public class EvaluatorTest {
         for(String str : array)
             expected.push(str);
         evaluator = new Evaluator();
-        result = Integer.parseInt(results);
+        result = Math.round(Double.parseDouble(results)*10.0)/10.0;
     }
     
     @Test
-    public void TestConvert() {
-        log.debug("expect: " + expected.toString() + " postfix: " + postfix.toString());
+    public void convertTest() {
         while(!postfix.isEmpty()) {
             assertEquals(expected.pop(), postfix.pop());
         }
     }
     
     @Test
-    public void TestEvaluate() {      
-        int rcvResult = evaluator.evaluate(postfix);
+    public void evaluateTest() {      
+        double rcvResult = Math.round(evaluator.evaluate(postfix)*10.0)/10.0;
         log.debug("expect: " + result + " received: " + rcvResult);
-        assertEquals(result, rcvResult);
+        assertTrue(result == rcvResult);
     }
     
     @Before

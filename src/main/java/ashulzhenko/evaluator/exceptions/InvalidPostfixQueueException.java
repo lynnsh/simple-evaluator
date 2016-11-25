@@ -5,6 +5,8 @@ package ashulzhenko.evaluator.exceptions;
  * @author 1242395
  */
 public class InvalidPostfixQueueException extends RuntimeException {
+    private static final long serialVersionUID = 42051768871L;
+    
     public InvalidPostfixQueueException() {
         super("The character in the postfix queue is invalid.");
     }

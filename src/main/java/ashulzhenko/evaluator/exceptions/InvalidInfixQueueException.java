@@ -5,6 +5,8 @@ package ashulzhenko.evaluator.exceptions;
  * @author 1242395
  */
 public class InvalidInfixQueueException extends RuntimeException {
+    private static final long serialVersionUID = 42051768871L;
+    
     public InvalidInfixQueueException() {
         super("The character in the infix queue is invalid.");
     }
