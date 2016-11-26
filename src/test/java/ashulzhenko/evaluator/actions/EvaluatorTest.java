@@ -1,15 +1,12 @@
 package ashulzhenko.evaluator.actions;
 
-import ashulzhenko.evaluator.actions.Evaluator;
 import ashulzhenko.evaluator.datastructures.EvaluatorQueue;
 import java.util.Arrays;
 import java.util.Collection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Assert;
 import org.junit.Before;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -115,6 +112,6 @@ public class EvaluatorTest {
     
     @Before
     public void init() {
-        postfix = evaluator.calculate(infix);
+        postfix = evaluator.toPostfix(infix);
     }
 }

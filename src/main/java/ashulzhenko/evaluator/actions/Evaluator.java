@@ -18,7 +18,7 @@ public class Evaluator {
     private EvaluatorStack<String> values;
     private String numRegex = "^[+-]?([0-9]*[.])?[0-9]+$";
     
-    public EvaluatorQueue<String> calculate(EvaluatorQueue<String> infix) {
+    public EvaluatorQueue<String> toPostfix(EvaluatorQueue<String> infix) {
         this.infix = infix;
         postfix = new EvaluatorQueue<>();
         operators = new EvaluatorStack<>();
@@ -44,6 +44,10 @@ public class Evaluator {
                 throw new InvalidPostfixQueueException();
             }
         }
+        //pop the result value
+        values.pop();
+        if(!values.isEmpty())
+            throw new InvalidPostfixQueueException("Invalid number of operands");
         return result;
     }
     
@@ -94,6 +98,7 @@ public class Evaluator {
             String prevOp = operators.peek();
             while(!prevOp.equals("(") && needSwap(prevOp, nextOp)) {
                 postfix.push(prevOp);
+                checkOperators();
                 operators.pop();
                 prevOp = operators.isEmpty() ? "(" : operators.peek();        
             }
@@ -108,13 +113,20 @@ public class Evaluator {
                 throw new InvalidOperatorException("Operator was expected in the queue: +, -, *, /.");
             else {
                 postfix.push(operator);
+                checkOperators();
                 while(!operators.peek().equals("(")) {
                     String value = operators.pop();
                     postfix.push(value);
+                    checkOperators();
                 }           
                 operators.pop();
             }
         }
+    }
+    
+    private void checkOperators() {
+        if(operators.isEmpty())
+            throw new InvalidOperatorException("Expected an operator, but stack is empty.");
     }
     
     //need swap if nextO <= prevO
