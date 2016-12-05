@@ -8,9 +8,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
+
 /**
- *
- * @author 1242395
+ * Tests Evaluator class with the invalid values.
+ * @author Alena Shulzhenko
  */
 public class EvaluatorExceptionsTest {
     private final Logger log = LogManager.getLogger(EvaluatorTest.class.getName());

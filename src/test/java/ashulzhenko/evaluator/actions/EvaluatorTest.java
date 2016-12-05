@@ -13,8 +13,8 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- *
- * @author aline
+ * Tests Evaluator class.
+ * @author Alena Shulzhenko
  */
 @RunWith(Parameterized.class)
 public class EvaluatorTest {
@@ -25,7 +25,9 @@ public class EvaluatorTest {
     private EvaluatorQueue<String> postfix;
     private double result;
     
-    //http://scriptasylum.com/tutorials/infix_postfix/infix_postfix.html
+    /*
+     * Contains the test data.
+     */
     @Parameters(name = "{index} plan[{0}]={1}]")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
@@ -78,11 +80,16 @@ public class EvaluatorTest {
             //24: (13+27)*2-34/17+2*7
             {"( 13 + 27 ) * 2 - 34 / 17 + 2 * 7", "13 27 + 2 * 34 17 / - 2 7 * +", "92"}, 
             //25: 1.4*2-2.3+(-17.3)
-            {"1.4 * 2 - 2.3 + ( -17.3 )", "1.4 2 * 2.3 - -17.3 +", "-16.8"}
-            
+            {"1.4 * 2 - 2.3 + ( -17.3 )", "1.4 2 * 2.3 - -17.3 +", "-16.8"}           
         });
     }
     
+    /**
+     * Initializes the parameters necessary for testing.
+     * @param expression the expression to convert and evaluate.
+     * @param expect the expected postfix expression.
+     * @param results the expected evaluated result.
+     */
     public EvaluatorTest(String expression, String expect, String results) {
         infix = new EvaluatorQueue<>();
         expected = new EvaluatorQueue<>();
@@ -106,7 +113,8 @@ public class EvaluatorTest {
     @Test
     public void evaluateTest() {      
         double rcvResult = Math.round(evaluator.evaluate(postfix)*10.0)/10.0;
-        log.debug("expect: " + result + " received: " + rcvResult);
+        log.debug("expected: " + result + " received: " + rcvResult);
+        //assertEquals is deprecated for doubles
         assertTrue(result == rcvResult);
     }
     

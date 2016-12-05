@@ -8,8 +8,13 @@ import ashulzhenko.evaluator.exceptions.InvalidOperatorException;
 import ashulzhenko.evaluator.exceptions.InvalidPostfixQueueException;
 
 /**
- *
- * @author 1242395
+ * The Evaluator class is responsible for evaluating the submitted expression.
+ * First, the infix expression is converted to the postfix expression
+ * and then it is evaluated.
+ * 
+ * @author Alena Shulzhenko
+ * @version 04/12/2016
+ * @since 1.8
  */
 public class Evaluator {
     private EvaluatorQueue<String> infix;
@@ -18,6 +23,11 @@ public class Evaluator {
     private EvaluatorStack<String> values;
     private String numRegex = "^[+-]?([0-9]*[.])?[0-9]+$";
     
+    /**
+     * Converts infix expression in the Queue to the postfix expression.
+     * @param infix the infix expression in the Queue to convert.
+     * @return the postfix expression in the Queue.
+     */
     public EvaluatorQueue<String> toPostfix(EvaluatorQueue<String> infix) {
         this.infix = infix;
         postfix = new EvaluatorQueue<>();
@@ -27,6 +37,12 @@ public class Evaluator {
         return postfix;
     }
     
+    /**
+     * Evaluates the postfix expression.
+     * @param postfix the postfix expression in the Queue to evaluate.
+     * @return the result of the provided expression.
+     * @throws InvalidPostfixQueueException if the provided expression is invalid.
+     */
     public double evaluate(EvaluatorQueue<String> postfix) {
         double result = 0;
         while(!postfix.isEmpty()) {
@@ -35,9 +51,9 @@ public class Evaluator {
                 values.push(value);
             }
             else if(isOperator(value)) {
-                double rightV = getValue();
-                double leftV = getValue();
-                result = performOperation(leftV, value, rightV);
+                double rightValue = getValue();
+                double leftValue = getValue();
+                result = performOperation(leftValue, value, rightValue);
                 values.push(result+"");
             }
             else {
@@ -51,30 +67,44 @@ public class Evaluator {
         return result;
     }
     
+    /**
+     * Gets the value from the postfix queue.
+     * @return the value from the postfix queue.
+     * @throws InvalidPostfixQueueException if the postfix queue is empty.
+     */
     private double getValue() {
         if(values.isEmpty())
-            throw new InvalidPostfixQueueException("The postfix queue is empty. An operand was expected");
+            throw new InvalidPostfixQueueException
+                    ("The postfix queue is empty. An operand was expected");
         return Double.parseDouble(values.pop());
     }
     
+    /**
+     * Determines if the provided value is a valid operator.
+     * @param value the value to verify.
+     * @return true if the provided value is a valid operator; false otherwise.
+     */
     private boolean isOperator(String value) {
         return value.equals("+") || value.equals("-")
             || value.equals("*") || value.equals("/");
     }
     
+    /**
+     * Converts infix expression to the postfix expression.
+     */
     private void convert() {      
-        int rightP = 0;
-        int leftP = 0;
+        int rightParentheses = 0;
+        int leftParentheses = 0;
         
         while(!infix.isEmpty()) {
             String value = infix.pop();
             if(value.equals("(")) {
-                leftP++;
+                leftParentheses++;
                 operators.push(value);
             }
             else if (value.equals(")")) {
-                rightP++;
-                handleRightBracket();              
+                rightParentheses++;
+                handleRightParenthesis();              
             }
             else if(isOperator(value)) {
                 handleOperator(value);
@@ -86,27 +116,37 @@ public class Evaluator {
                 throw new InvalidInfixQueueException();
             }
         }
+        //pop the left operators from the stack
         while(!operators.isEmpty()) {
             postfix.push(operators.pop());
         }
-        if(rightP != leftP)
+        //verify that the expression has the same number of left and right parentheses
+        if(rightParentheses != leftParentheses)
             throw new InvalidOperatorException("Parentheses do not match.");
     }
     
-    private void handleOperator(String nextOp) {     
+    /**
+     * Adds operators to the queue or to the stack depending on their
+     * level of precedence.
+     * @param nextOperator the current operator in the infix queue.
+     */
+    private void handleOperator(String nextOperator) {     
         if(!operators.isEmpty()) {
-            String prevOp = operators.peek();
-            while(!prevOp.equals("(") && needSwap(prevOp, nextOp)) {
-                postfix.push(prevOp);
+            String prevOperator = operators.peek();
+            while(!prevOperator.equals("(") && needSwap(prevOperator, nextOperator)) {
+                postfix.push(prevOperator);
                 checkOperators();
                 operators.pop();
-                prevOp = operators.isEmpty() ? "(" : operators.peek();        
+                prevOperator = operators.isEmpty() ? "(" : operators.peek();        
             }
         }
-        operators.push(nextOp);
+        operators.push(nextOperator);
     }
     
-    private void handleRightBracket() {   
+    /**
+     * Handles operators in parentheses.
+     */
+    private void handleRightParenthesis() {   
         String operator = operators.pop();
         if(!operator.equals("(")) {
             if(!isOperator(operator))
@@ -124,33 +164,56 @@ public class Evaluator {
         }
     }
     
+    /**
+     * Checks if operators stack is empty.
+     * @throws InvalidOperatorException if operators stack is empty.
+     */
     private void checkOperators() {
         if(operators.isEmpty())
             throw new InvalidOperatorException("Expected an operator, but stack is empty.");
     }
     
-    //need swap if nextO <= prevO
-    private boolean needSwap(String prevO, String nextO) {
-        if(nextO.equals("+") || nextO.equals("-")) {
+    /**
+     * Verifies if the previous operator needs to be pulled from operators stack.
+     * If the level of precedence for the next operator is less than
+     * or equals to the previous operator, the previous operator is popped from
+     * the stack.
+     * @param prevOperator the current last operator in operators stack.
+     * @param nextOperator the current operator in the infix queue.
+     * @return true if the previous operator needs to be pulled 
+     *         from operators stack; false otherwise.
+     * @throws InvalidOperatorException if the nextOperator value
+     *         is not an operator.
+     */
+    private boolean needSwap(String prevOperator, String nextOperator) {
+        if(nextOperator.equals("+") || nextOperator.equals("-")) {
             return true;            
         }
-        if(nextO.equals("*") || nextO.equals("/")) {
-            return prevO.equals("*") || prevO.equals("/");
+        if(nextOperator.equals("*") || nextOperator.equals("/")) {
+            return prevOperator.equals("*") || prevOperator.equals("/");
         }
         else
             throw new InvalidOperatorException("Operator was expected in the queue: +, -, *, /.");
     }
 
-    private double performOperation(double leftV, String operator, double rightV) {
+    /**
+     * Performs the operation corresponding to the provided operator.
+     * @param leftValue the leftmost operand in the operation.
+     * @param operator the operator to determine the operation.
+     * @param rightValue the rightmost operand in the operation.
+     * @return the result of the operation.
+     * @throws InvalidOperatorException if the provided operator is invalid.
+     */
+    private double performOperation(double leftValue, String operator, double rightValue) {
         switch (operator) {
             case "+":
-                return leftV+rightV;
+                return leftValue+rightValue;
             case "*":
-                return leftV*rightV;
+                return leftValue*rightValue;
             case "/":
-                return leftV/rightV;
+                return leftValue/rightValue;
             case "-":
-                return leftV-rightV;
+                return leftValue-rightValue;
             default:
                 throw new InvalidOperatorException("Operator was expected in the queue: +, -, *, /.");
         }
