@@ -23,7 +23,7 @@ public class EvaluatorTest {
     private EvaluatorQueue<String> infix;
     private EvaluatorQueue<String> expected;
     private EvaluatorQueue<String> postfix;
-    private double result;
+    private String result;
     
     /*
      * Contains the test data.
@@ -32,21 +32,21 @@ public class EvaluatorTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
             //1: 2+3*4
-            {"2 + 3 * 4", "2 3 4 * +", "14"},           
+            {"2 + 3 * 4", "2 3 4 * +", "14.0"},           
             //2: 2*3+4
-            {"2 * 3 + 4", "2 3 * 4 +", "10"},           
+            {"2 * 3 + 4", "2 3 * 4 +", "10.0"},           
             //3: ((5+1)*2)+3
-            {"( ( 5 + 1 ) * 2 ) + 3", "5 1 + 2 * 3 +", "15"},  
+            {"( ( 5 + 1 ) * 2 ) + 3", "5 1 + 2 * 3 +", "15.0"},  
             //4: (5+1)*2+3
-            {"( 5 + 1 ) * 2 + 3", "5 1 + 2 * 3 +", "15"}, 
+            {"( 5 + 1 ) * 2 + 3", "5 1 + 2 * 3 +", "15.0"}, 
             //5: 5+(1*2)+3
-            {"5 + ( 1 * 2 ) + 3", "5 1 2 * + 3 +", "10"}, 
+            {"5 + ( 1 * 2 ) + 3", "5 1 2 * + 3 +", "10.0"}, 
             //6: 10+(2*3)+(1+3)*5
-            {"10 + ( 2 * 3 ) + ( 1 + 3 ) * 5", "10 2 3 * + 1 3 + 5 * +", "36"},
+            {"10 + ( 2 * 3 ) + ( 1 + 3 ) * 5", "10 2 3 * + 1 3 + 5 * +", "36.0"},
             //7: 2*(3+2*7)+10
-            {"2 * ( 3 + 2 * 7 ) + 10", "2 3 2 7 * + * 10 +", "44"},
+            {"2 * ( 3 + 2 * 7 ) + 10", "2 3 2 7 * + * 10 +", "44.0"},
             //8: 11+1-100*2/(50-25)+25
-            {"11 + 1 - 100 * 2 / ( 50 - 25 ) + 25", "11 1 + 100 2 * 50 25 - / - 25 +", "29"},
+            {"11 + 1 - 100 * 2 / ( 50 - 25 ) + 25", "11 1 + 100 2 * 50 25 - / - 25 +", "29.0"},
             //9: 11+((1-100)*2/(50-25))+25
             {"11 + ( ( 1 - 100 ) * 2 / ( 50 - 25 ) ) + 25", "11 1 100 - 2 * 50 25 - / + 25 +", "28.08"},
             //10: 2.3*3+4.7
@@ -54,31 +54,31 @@ public class EvaluatorTest {
             //11: ((3+11)/(2+8)-3)*2
             {"( ( 3 + 11 ) / ( 2 + 8 ) - 3 ) * 2", "3 11 + 2 8 + / 3 - 2 *", "-3.2"},           
             //12: (2+8*2/4)-(3+7)/2+7
-            {"( 2 + 8 * 2 / 4 ) - ( 3 + 7 ) / 2 + 7", "2 8 2 * 4 / + 3 7 + 2 / - 7 +", "8"},           
+            {"( 2 + 8 * 2 / 4 ) - ( 3 + 7 ) / 2 + 7", "2 8 2 * 4 / + 3 7 + 2 / - 7 +", "8.0"},           
             //13: (-10*8)*100+21/7
-            {"( -10 * 8 ) * 100 + 21 / 7", "-10 8 * 100 * 21 7 / +", "-7997"},  
+            {"( -10 * 8 ) * 100 + 21 / 7", "-10 8 * 100 * 21 7 / +", "-7997.0"},  
             //14: (22/11+3-7)*12-(2+1)
-            {"( 22 / 11 + 3 - 7 ) * 12 - ( 2 + 1 )", "22 11 / 3 + 7 - 12 * 2 1 + -", "-27"}, 
+            {"( 22 / 11 + 3 - 7 ) * 12 - ( 2 + 1 )", "22 11 / 3 + 7 - 12 * 2 1 + -", "-27.0"}, 
             //15: 100/10*2.5+(-20)
-            {"100 / 10 * 2.5 + ( -20 )", "100 10 / 2.5 * -20 +", "5"}, 
+            {"100 / 10 * 2.5 + ( -20 )", "100 10 / 2.5 * -20 +", "5.0"}, 
             //16: 1/0.4+2.3-(-10)
             {"1 / 0.4 + 2.3 - ( -10 )", "1 0.4 / 2.3 + -10 -", "14.8"},
             //17: (1+(3+(4-5)*3)-5)-10
-            {"( 1 + ( 3 + ( 4 - 5 ) * 3 ) - 5 ) - 10", "1 3 4 5 - 3 * + + 5 - 10 -", "-14"},
+            {"( 1 + ( 3 + ( 4 - 5 ) * 3 ) - 5 ) - 10", "1 3 4 5 - 3 * + + 5 - 10 -", "-14.0"},
             //18: (((((2+7)-5*2)/2)-2)+10)*3
             {"( ( ( ( ( 2 + 7 ) - 5 * 2 ) / 2 ) - 2 ) + 10 ) * 3", "2 7 + 5 2 * - 2 / 2 - 10 + 3 *", "22.5"},
             //19: 10/2
-            {"10 / 2", "10 2 /", "5"},
+            {"10 / 2", "10 2 /", "5.0"},
             //20: 2+2+2+2+2
-            {"2 + 2 + 2 + 2 + 2", "2 2 + 2 + 2 + 2 +", "10"},          
+            {"2 + 2 + 2 + 2 + 2", "2 2 + 2 + 2 + 2 +", "10.0"},          
             //21: 10-(2/2+3-(10+27))-5
-            {"10 - ( 2 / 2 + 3 - ( 10 + 27 ) ) - 5", "10 2 2 / 3 + 10 27 + - - 5 -", "38"},           
+            {"10 - ( 2 / 2 + 3 - ( 10 + 27 ) ) - 5", "10 2 2 / 3 + 10 27 + - - 5 -", "38.0"},           
             //22: 22/2+2*2-2+2
-            {"22 / 2 + 2 * 2 - 2 + 2", "22 2 / 2 2 * + 2 - 2 +", "15"},           
+            {"22 / 2 + 2 * 2 - 2 + 2", "22 2 / 2 2 * + 2 - 2 +", "15.0"},           
             //23: ((12-10)/5+(33+11)-15)*23
             {"( ( 12 - 10 ) / 5 + ( 33 + 11 ) - 15 ) * 23", "12 10 - 5 / 33 11 + + 15 - 23 *", "676.2"},  
             //24: (13+27)*2-34/17+2*7
-            {"( 13 + 27 ) * 2 - 34 / 17 + 2 * 7", "13 27 + 2 * 34 17 / - 2 7 * +", "92"}, 
+            {"( 13 + 27 ) * 2 - 34 / 17 + 2 * 7", "13 27 + 2 * 34 17 / - 2 7 * +", "92.0"}, 
             //25: 1.4*2-2.3+(-17.3)
             {"1.4 * 2 - 2.3 + ( -17.3 )", "1.4 2 * 2.3 - -17.3 +", "-16.8"}           
         });
@@ -88,9 +88,9 @@ public class EvaluatorTest {
      * Initializes the parameters necessary for testing.
      * @param expression the expression to convert and evaluate.
      * @param expect the expected postfix expression.
-     * @param results the expected evaluated result.
+     * @param result the expected evaluated result.
      */
-    public EvaluatorTest(String expression, String expect, String results) {
+    public EvaluatorTest(String expression, String expect, String result) {
         infix = new EvaluatorQueue<>();
         expected = new EvaluatorQueue<>();
         String[] array = expression.split(" ");
@@ -100,7 +100,8 @@ public class EvaluatorTest {
         for(String str : array)
             expected.push(str);
         evaluator = new Evaluator();
-        result = Math.round(Double.parseDouble(results)*10.0)/10.0;
+        //result = Math.round(Double.parseDouble(results)*10.0)/10.0;
+        this.result = result;
     }
     
     @Test
@@ -112,10 +113,10 @@ public class EvaluatorTest {
     
     @Test
     public void evaluateTest() {      
-        double rcvResult = Math.round(evaluator.evaluate(postfix)*10.0)/10.0;
+        double received = Double.parseDouble(evaluator.evaluate(postfix).pop());
+        String rcvResult = (Math.round(received*100.0)/100.0)+"";
         log.debug("expected: " + result + " received: " + rcvResult);
-        //assertEquals is deprecated for doubles
-        assertTrue(result == rcvResult);
+        assertEquals(result, rcvResult);
     }
     
     @Before

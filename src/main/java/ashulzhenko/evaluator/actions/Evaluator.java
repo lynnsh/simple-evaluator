@@ -43,8 +43,9 @@ public class Evaluator {
      * @return the result of the provided expression.
      * @throws InvalidPostfixQueueException if the provided expression is invalid.
      */
-    public double evaluate(EvaluatorQueue<String> postfix) {
-        double result = 0;
+    public EvaluatorQueue<String> evaluate(EvaluatorQueue<String> postfix) {
+        double result;
+        EvaluatorQueue<String> resultQueue = new EvaluatorQueue<>();
         while(!postfix.isEmpty()) {
             String value = postfix.pop();
             if(Pattern.matches(numRegex, value)) {
@@ -59,12 +60,12 @@ public class Evaluator {
             else {
                 throw new InvalidPostfixQueueException();
             }
-        }
+        }     
         //pop the result value
-        values.pop();
+        resultQueue.push(values.pop());
         if(!values.isEmpty())
             throw new InvalidPostfixQueueException("Invalid number of operands");
-        return result;
+        return resultQueue;
     }
     
     /**

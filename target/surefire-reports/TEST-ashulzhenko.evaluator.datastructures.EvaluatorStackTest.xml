@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ashulzhenko.evaluator.datastructures.EvaluatorStackTest" time="0" tests="11" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ashulzhenko.evaluator.datastructures.EvaluatorStackTest" time="0.001" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/opt/java/jdk1.8.0_91/jre/lib/amd64"/>
@@ -61,7 +61,7 @@
   </properties>
   <testcase name="peekhMultipleValuesTest" classname="ashulzhenko.evaluator.datastructures.EvaluatorStackTest" time="0"/>
   <testcase name="isEmptyWithValuesTest" classname="ashulzhenko.evaluator.datastructures.EvaluatorStackTest" time="0"/>
-  <testcase name="popTest" classname="ashulzhenko.evaluator.datastructures.EvaluatorStackTest" time="0"/>
+  <testcase name="popTest" classname="ashulzhenko.evaluator.datastructures.EvaluatorStackTest" time="0.001"/>
   <testcase name="isEmptyTest" classname="ashulzhenko.evaluator.datastructures.EvaluatorStackTest" time="0"/>
   <testcase name="pushNullTest" classname="ashulzhenko.evaluator.datastructures.EvaluatorStackTest" time="0"/>
   <testcase name="popEmptyStackTest" classname="ashulzhenko.evaluator.datastructures.EvaluatorStackTest" time="0"/>
