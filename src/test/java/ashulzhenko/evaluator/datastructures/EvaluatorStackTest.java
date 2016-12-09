@@ -1,10 +1,6 @@
 package ashulzhenko.evaluator.datastructures;
 
 import ashulzhenko.evaluator.exceptions.EmptyStackException;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -13,11 +9,16 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 /**
- *
- * @author 1242395
+ * Tests EvaluatorStack class.
+ * @author Alena Shulzhenko
  */
 public class EvaluatorStackTest {
     EvaluatorStack<String> stack;
+    
+    @Before
+    public void init() {
+        stack = new EvaluatorStack<>();
+    }
     
     @Test
     public void isEmptyTest() {
@@ -87,10 +88,5 @@ public class EvaluatorStackTest {
         stack.push("orange");
         stack.push("mango");
         assertEquals(stack.peek(), "mango");
-    }
-    
-    @Before
-    public void init() {
-        stack = new EvaluatorStack<>();
     }
 }

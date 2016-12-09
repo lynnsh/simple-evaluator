@@ -9,11 +9,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- *
- * @author 1242395
+ * Tests EvaluatorQueue class.
+ * @author Alena Shulzhenko
  */
 public class EvaluatorQueueTest {
     EvaluatorQueue<String> queue;
+    
+    @Before
+    public void init() {
+        queue = new EvaluatorQueue<>();
+    }
     
     @Test
     public void isEmptyTest() {
@@ -52,7 +57,7 @@ public class EvaluatorQueueTest {
         assertEquals(queue.pop(), "orange");
     }
     
-        @Test
+    @Test
     public void popTest() {
         queue.push("orange");
         queue.pop();
@@ -63,10 +68,5 @@ public class EvaluatorQueueTest {
     public void popEmptyQueueTest() {
         queue.pop();
         fail();
-    }
-    
-    @Before
-    public void init() {
-        queue = new EvaluatorQueue<>();
     }
 }

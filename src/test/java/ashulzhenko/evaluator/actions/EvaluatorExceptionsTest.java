@@ -60,6 +60,10 @@ public class EvaluatorExceptionsTest {
         evaluator = new Evaluator();   
     }
     
+    /**
+     * A helper method that fills a queue with the sent expression.
+     * @param expression the expression to add to the queue.
+     */
     public void fill(String expression) {
         for(String str : expression.split(" "))
             infix.push(str);

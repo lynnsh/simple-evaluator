@@ -61,7 +61,7 @@ public class Evaluator {
                 throw new InvalidPostfixQueueException();
             }
         }     
-        //pop the result value
+        //push the result value to the queue
         resultQueue.push(values.pop());
         if(!values.isEmpty())
             throw new InvalidPostfixQueueException("Invalid number of operands");

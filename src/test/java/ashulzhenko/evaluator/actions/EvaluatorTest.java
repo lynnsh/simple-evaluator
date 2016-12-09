@@ -100,7 +100,6 @@ public class EvaluatorTest {
         for(String str : array)
             expected.push(str);
         evaluator = new Evaluator();
-        //result = Math.round(Double.parseDouble(results)*10.0)/10.0;
         this.result = result;
     }
     

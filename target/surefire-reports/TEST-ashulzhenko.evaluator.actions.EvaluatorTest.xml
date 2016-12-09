@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.625" tests="50" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.757" tests="50" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/opt/java/jdk1.8.0_91/jre/lib/amd64"/>
@@ -59,54 +59,54 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="convertTest[0 plan[2 + 3 * 4]=2 3 4 * +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
-  <testcase name="evaluateTest[0 plan[2 + 3 * 4]=2 3 4 * +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.008"/>
+  <testcase name="convertTest[0 plan[2 + 3 * 4]=2 3 4 * +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.003"/>
+  <testcase name="evaluateTest[0 plan[2 + 3 * 4]=2 3 4 * +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.007"/>
   <testcase name="convertTest[1 plan[2 * 3 + 4]=2 3 * 4 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
   <testcase name="evaluateTest[1 plan[2 * 3 + 4]=2 3 * 4 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[2 plan[( ( 5 + 1 ) * 2 ) + 3]=5 1 + 2 * 3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
-  <testcase name="evaluateTest[2 plan[( ( 5 + 1 ) * 2 ) + 3]=5 1 + 2 * 3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
+  <testcase name="evaluateTest[2 plan[( ( 5 + 1 ) * 2 ) + 3]=5 1 + 2 * 3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[3 plan[( 5 + 1 ) * 2 + 3]=5 1 + 2 * 3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
-  <testcase name="evaluateTest[3 plan[( 5 + 1 ) * 2 + 3]=5 1 + 2 * 3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
+  <testcase name="evaluateTest[3 plan[( 5 + 1 ) * 2 + 3]=5 1 + 2 * 3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
   <testcase name="convertTest[4 plan[5 + ( 1 * 2 ) + 3]=5 1 2 * + 3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
   <testcase name="evaluateTest[4 plan[5 + ( 1 * 2 ) + 3]=5 1 2 * + 3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[5 plan[10 + ( 2 * 3 ) + ( 1 + 3 ) * 5]=10 2 3 * + 1 3 + 5 * +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
   <testcase name="evaluateTest[5 plan[10 + ( 2 * 3 ) + ( 1 + 3 ) * 5]=10 2 3 * + 1 3 + 5 * +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="convertTest[6 plan[2 * ( 3 + 2 * 7 ) + 10]=2 3 2 7 * + * 10 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
+  <testcase name="convertTest[6 plan[2 * ( 3 + 2 * 7 ) + 10]=2 3 2 7 * + * 10 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
   <testcase name="evaluateTest[6 plan[2 * ( 3 + 2 * 7 ) + 10]=2 3 2 7 * + * 10 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[7 plan[11 + 1 - 100 * 2 / ( 50 - 25 ) + 25]=11 1 + 100 2 * 50 25 - / - 25 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="evaluateTest[7 plan[11 + 1 - 100 * 2 / ( 50 - 25 ) + 25]=11 1 + 100 2 * 50 25 - / - 25 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
-  <testcase name="convertTest[8 plan[11 + ( ( 1 - 100 ) * 2 / ( 50 - 25 ) ) + 25]=11 1 100 - 2 * 50 25 - / + 25 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="evaluateTest[8 plan[11 + ( ( 1 - 100 ) * 2 / ( 50 - 25 ) ) + 25]=11 1 100 - 2 * 50 25 - / + 25 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
+  <testcase name="convertTest[8 plan[11 + ( ( 1 - 100 ) * 2 / ( 50 - 25 ) ) + 25]=11 1 100 - 2 * 50 25 - / + 25 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
+  <testcase name="evaluateTest[8 plan[11 + ( ( 1 - 100 ) * 2 / ( 50 - 25 ) ) + 25]=11 1 100 - 2 * 50 25 - / + 25 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[9 plan[2.3 * 3 + 4.7]=2.3 3 * 4.7 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="evaluateTest[9 plan[2.3 * 3 + 4.7]=2.3 3 * 4.7 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
+  <testcase name="evaluateTest[9 plan[2.3 * 3 + 4.7]=2.3 3 * 4.7 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
   <testcase name="convertTest[10 plan[( ( 3 + 11 ) / ( 2 + 8 ) - 3 ) * 2]=3 11 + 2 8 + / 3 - 2 *]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
-  <testcase name="evaluateTest[10 plan[( ( 3 + 11 ) / ( 2 + 8 ) - 3 ) * 2]=3 11 + 2 8 + / 3 - 2 *]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
-  <testcase name="convertTest[11 plan[( 2 + 8 * 2 / 4 ) - ( 3 + 7 ) / 2 + 7]=2 8 2 * 4 / + 3 7 + 2 / - 7 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="evaluateTest[11 plan[( 2 + 8 * 2 / 4 ) - ( 3 + 7 ) / 2 + 7]=2 8 2 * 4 / + 3 7 + 2 / - 7 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
-  <testcase name="convertTest[12 plan[( -10 * 8 ) * 100 + 21 / 7]=-10 8 * 100 * 21 7 / +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="evaluateTest[12 plan[( -10 * 8 ) * 100 + 21 / 7]=-10 8 * 100 * 21 7 / +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
-  <testcase name="convertTest[13 plan[( 22 / 11 + 3 - 7 ) * 12 - ( 2 + 1 )]=22 11 / 3 + 7 - 12 * 2 1 + -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
-  <testcase name="evaluateTest[13 plan[( 22 / 11 + 3 - 7 ) * 12 - ( 2 + 1 )]=22 11 / 3 + 7 - 12 * 2 1 + -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="convertTest[14 plan[100 / 10 * 2.5 + ( -20 )]=100 10 / 2.5 * -20 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
+  <testcase name="evaluateTest[10 plan[( ( 3 + 11 ) / ( 2 + 8 ) - 3 ) * 2]=3 11 + 2 8 + / 3 - 2 *]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
+  <testcase name="convertTest[11 plan[( 2 + 8 * 2 / 4 ) - ( 3 + 7 ) / 2 + 7]=2 8 2 * 4 / + 3 7 + 2 / - 7 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
+  <testcase name="evaluateTest[11 plan[( 2 + 8 * 2 / 4 ) - ( 3 + 7 ) / 2 + 7]=2 8 2 * 4 / + 3 7 + 2 / - 7 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.004"/>
+  <testcase name="convertTest[12 plan[( -10 * 8 ) * 100 + 21 / 7]=-10 8 * 100 * 21 7 / +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
+  <testcase name="evaluateTest[12 plan[( -10 * 8 ) * 100 + 21 / 7]=-10 8 * 100 * 21 7 / +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
+  <testcase name="convertTest[13 plan[( 22 / 11 + 3 - 7 ) * 12 - ( 2 + 1 )]=22 11 / 3 + 7 - 12 * 2 1 + -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
+  <testcase name="evaluateTest[13 plan[( 22 / 11 + 3 - 7 ) * 12 - ( 2 + 1 )]=22 11 / 3 + 7 - 12 * 2 1 + -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.004"/>
+  <testcase name="convertTest[14 plan[100 / 10 * 2.5 + ( -20 )]=100 10 / 2.5 * -20 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
   <testcase name="evaluateTest[14 plan[100 / 10 * 2.5 + ( -20 )]=100 10 / 2.5 * -20 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[15 plan[1 / 0.4 + 2.3 - ( -10 )]=1 0.4 / 2.3 + -10 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="evaluateTest[15 plan[1 / 0.4 + 2.3 - ( -10 )]=1 0.4 / 2.3 + -10 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="convertTest[16 plan[( 1 + ( 3 + ( 4 - 5 ) * 3 ) - 5 ) - 10]=1 3 4 5 - 3 * + + 5 - 10 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="evaluateTest[16 plan[( 1 + ( 3 + ( 4 - 5 ) * 3 ) - 5 ) - 10]=1 3 4 5 - 3 * + + 5 - 10 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
+  <testcase name="evaluateTest[15 plan[1 / 0.4 + 2.3 - ( -10 )]=1 0.4 / 2.3 + -10 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
+  <testcase name="convertTest[16 plan[( 1 + ( 3 + ( 4 - 5 ) * 3 ) - 5 ) - 10]=1 3 4 5 - 3 * + + 5 - 10 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
+  <testcase name="evaluateTest[16 plan[( 1 + ( 3 + ( 4 - 5 ) * 3 ) - 5 ) - 10]=1 3 4 5 - 3 * + + 5 - 10 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[17 plan[( ( ( ( ( 2 + 7 ) - 5 * 2 ) / 2 ) - 2 ) + 10 ) * 3]=2 7 + 5 2 * - 2 / 2 - 10 + 3 *]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="evaluateTest[17 plan[( ( ( ( ( 2 + 7 ) - 5 * 2 ) / 2 ) - 2 ) + 10 ) * 3]=2 7 + 5 2 * - 2 / 2 - 10 + 3 *]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.005"/>
+  <testcase name="evaluateTest[17 plan[( ( ( ( ( 2 + 7 ) - 5 * 2 ) / 2 ) - 2 ) + 10 ) * 3]=2 7 + 5 2 * - 2 / 2 - 10 + 3 *]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[18 plan[10 / 2]=10 2 /]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
   <testcase name="evaluateTest[18 plan[10 / 2]=10 2 /]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[19 plan[2 + 2 + 2 + 2 + 2]=2 2 + 2 + 2 + 2 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
-  <testcase name="evaluateTest[19 plan[2 + 2 + 2 + 2 + 2]=2 2 + 2 + 2 + 2 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
-  <testcase name="convertTest[20 plan[10 - ( 2 / 2 + 3 - ( 10 + 27 ) ) - 5]=10 2 2 / 3 + 10 27 + - - 5 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="evaluateTest[20 plan[10 - ( 2 / 2 + 3 - ( 10 + 27 ) ) - 5]=10 2 2 / 3 + 10 27 + - - 5 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
+  <testcase name="evaluateTest[19 plan[2 + 2 + 2 + 2 + 2]=2 2 + 2 + 2 + 2 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
+  <testcase name="convertTest[20 plan[10 - ( 2 / 2 + 3 - ( 10 + 27 ) ) - 5]=10 2 2 / 3 + 10 27 + - - 5 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
+  <testcase name="evaluateTest[20 plan[10 - ( 2 / 2 + 3 - ( 10 + 27 ) ) - 5]=10 2 2 / 3 + 10 27 + - - 5 -]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
   <testcase name="convertTest[21 plan[22 / 2 + 2 * 2 - 2 + 2]=22 2 / 2 2 * + 2 - 2 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
-  <testcase name="evaluateTest[21 plan[22 / 2 + 2 * 2 - 2 + 2]=22 2 / 2 2 * + 2 - 2 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.002"/>
+  <testcase name="evaluateTest[21 plan[22 / 2 + 2 * 2 - 2 + 2]=22 2 / 2 2 * + 2 - 2 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[22 plan[( ( 12 - 10 ) / 5 + ( 33 + 11 ) - 15 ) * 23]=12 10 - 5 / 33 11 + + 15 - 23 *]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="evaluateTest[22 plan[( ( 12 - 10 ) / 5 + ( 33 + 11 ) - 15 ) * 23]=12 10 - 5 / 33 11 + + 15 - 23 *]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
   <testcase name="convertTest[23 plan[( 13 + 27 ) * 2 - 34 / 17 + 2 * 7]=13 27 + 2 * 34 17 / - 2 7 * +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
   <testcase name="evaluateTest[23 plan[( 13 + 27 ) * 2 - 34 / 17 + 2 * 7]=13 27 + 2 * 34 17 / - 2 7 * +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="convertTest[24 plan[1.4 * 2 - 2.3 + ( -17.3 )]=1.4 2 * 2.3 - -17.3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
-  <testcase name="evaluateTest[24 plan[1.4 * 2 - 2.3 + ( -17.3 )]=1.4 2 * 2.3 - -17.3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0.001"/>
+  <testcase name="convertTest[24 plan[1.4 * 2 - 2.3 + ( -17.3 )]=1.4 2 * 2.3 - -17.3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
+  <testcase name="evaluateTest[24 plan[1.4 * 2 - 2.3 + ( -17.3 )]=1.4 2 * 2.3 - -17.3 +]]" classname="ashulzhenko.evaluator.actions.EvaluatorTest" time="0"/>
 </testsuite>
