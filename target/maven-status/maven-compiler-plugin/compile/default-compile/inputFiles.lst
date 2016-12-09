@@ -1,8 +1,8 @@
-/home/aline/Documents/NetBeansProjects/java-evaluator/src/main/java/ashulzhenko/evaluator/exceptions/EmptyStackException.java
-/home/aline/Documents/NetBeansProjects/java-evaluator/src/main/java/ashulzhenko/evaluator/exceptions/InvalidInfixQueueException.java
-/home/aline/Documents/NetBeansProjects/java-evaluator/src/main/java/ashulzhenko/evaluator/actions/Evaluator.java
-/home/aline/Documents/NetBeansProjects/java-evaluator/src/main/java/ashulzhenko/evaluator/exceptions/InvalidOperatorException.java
-/home/aline/Documents/NetBeansProjects/java-evaluator/src/main/java/ashulzhenko/evaluator/exceptions/EmptyQueueException.java
-/home/aline/Documents/NetBeansProjects/java-evaluator/src/main/java/ashulzhenko/evaluator/datastructures/EvaluatorQueue.java
-/home/aline/Documents/NetBeansProjects/java-evaluator/src/main/java/ashulzhenko/evaluator/exceptions/InvalidPostfixQueueException.java
-/home/aline/Documents/NetBeansProjects/java-evaluator/src/main/java/ashulzhenko/evaluator/datastructures/EvaluatorStack.java
+H:\java\java_evaluator\src\main\java\ashulzhenko\evaluator\exceptions\InvalidInfixQueueException.java
+H:\java\java_evaluator\src\main\java\ashulzhenko\evaluator\actions\Evaluator.java
+H:\java\java_evaluator\src\main\java\ashulzhenko\evaluator\exceptions\EmptyQueueException.java
+H:\java\java_evaluator\src\main\java\ashulzhenko\evaluator\exceptions\InvalidPostfixQueueException.java
+H:\java\java_evaluator\src\main\java\ashulzhenko\evaluator\datastructures\EvaluatorQueue.java
+H:\java\java_evaluator\src\main\java\ashulzhenko\evaluator\datastructures\EvaluatorStack.java
+H:\java\java_evaluator\src\main\java\ashulzhenko\evaluator\exceptions\EmptyStackException.java
+H:\java\java_evaluator\src\main\java\ashulzhenko\evaluator\exceptions\InvalidOperatorException.java

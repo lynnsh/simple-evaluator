@@ -1,8 +1,8 @@
-ashulzhenko/evaluator/exceptions/EmptyQueueException.class
-ashulzhenko/evaluator/exceptions/EmptyStackException.class
-ashulzhenko/evaluator/actions/Evaluator.class
-ashulzhenko/evaluator/exceptions/InvalidPostfixQueueException.class
-ashulzhenko/evaluator/datastructures/EvaluatorQueue.class
-ashulzhenko/evaluator/exceptions/InvalidOperatorException.class
-ashulzhenko/evaluator/datastructures/EvaluatorStack.class
-ashulzhenko/evaluator/exceptions/InvalidInfixQueueException.class
+ashulzhenko\evaluator\exceptions\InvalidOperatorException.class
+ashulzhenko\evaluator\exceptions\InvalidPostfixQueueException.class
+ashulzhenko\evaluator\exceptions\InvalidInfixQueueException.class
+ashulzhenko\evaluator\exceptions\EmptyQueueException.class
+ashulzhenko\evaluator\datastructures\EvaluatorStack.class
+ashulzhenko\evaluator\datastructures\EvaluatorQueue.class
+ashulzhenko\evaluator\actions\Evaluator.class
+ashulzhenko\evaluator\exceptions\EmptyStackException.class
