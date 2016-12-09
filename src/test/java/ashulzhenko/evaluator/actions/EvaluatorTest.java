@@ -113,6 +113,8 @@ public class EvaluatorTest {
     @Test
     public void evaluateTest() {      
         double received = Double.parseDouble(evaluator.evaluate(postfix).pop());
+		//rounding up to 2 decimal places the result 
+		//in order to avoid double inaccuracies
         String rcvResult = (Math.round(received*100.0)/100.0)+"";
         log.debug("expected: " + result + " received: " + rcvResult);
         assertEquals(result, rcvResult);
